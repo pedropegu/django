@@ -1,40 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
     <title>Pedro | {% block head_title %}{% endblock %}</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbar-static/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-    {% include "head_css.html" %}
-
+{% include "head_css.html" %}  
   </head>
   <body>
-    
 {% include "navbar.html" %}
 
-<main class="container">
-  <div class="bg-light p-5 rounded">
 
-    {% block jumbotron_content%}
-    {% endblock %}
-  </div>
-</main>
-  {% block content %}
-  {% endblock %}
+    <div class="container">
+<div class="container">
+
+{% block jumbotron %}
+ <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+{% block jumbotron_content %}
+
+{% endblock %}
+      </div>
+      <br>
+      <br>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+    </div>
+</div>
 
 
-
-    <script src="{% static 'js/bundle.min.js' %}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-      
   </body>
 </html>

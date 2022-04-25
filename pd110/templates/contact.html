@@ -1,20 +1,17 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Contacto{% endblock %}
-<hr/>
 
 {% block content %}
-
-<div class="row" align="center">
-    <div class="col-sm-6 col-sm-offset-3">
-        {% if form %}
-        <form method="POST" action="">{% csrf_token %}
-        {{ form|crispy }}
-        <input class="btn btn-primary" type="submit" value="Registrame"/>
-        </form>
-    </div>
-</div>
-
+<div class='row'>
+	<div class='col-sm-6 col-sm-offset-3'>
+{% if titulo %}
+<h2 class='text-align-center'><strong>{{ titulo }}</strong></h2>
 {% endif %}
+<form method="POST" action="">{% csrf_token %}
+    {{ form|crispy }}
+<input class='btn btn-primary' type='submit' value='Registrame' />
+</form>
+</div>
+</div>
 {% endblock %}
