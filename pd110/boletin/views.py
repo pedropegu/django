@@ -1,8 +1,8 @@
-import email
-import re
-from types import MethodDescriptorType, MethodType
+
+from django.core.mail import send_mail
+from django.conf import settings
 from django.shortcuts import render
-from .forms import ReggForm,RegModelForm
+from .forms import RegModelForm, ContactForm
 from .models import Registrado
 # Create your views here.
 def inicio(request):
@@ -25,7 +25,7 @@ def inicio(request):
         instance = form.save(commit=False)
         nombre = form.cleaned_data.get("nombre")
         email = form.cleaned_data.get("email")
-        
+        print(email)
         if not instance.nombre:
             instance.nombre = "persona"
         instance.save()
@@ -44,3 +44,26 @@ def inicio(request):
         # obj = Registrado.objects.create(email=correo, nombre=usuario)
 
     return render(request, "index.html", context)
+
+def contacto(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        
+        email = form.cleaned_data.get("email")
+        nombre = form.cleaned_data.get("nombre")
+        mensaje = form.cleaned_data.get("mensaje")
+        
+        asunto = "Django Contacto"
+        email_from = settings.EMAIL_HOST_USER
+        email_to = [email_from,"otroemail@gmail.com"]
+        send_mail(asunto,
+        mensaje,
+        email_from,
+        email_to,
+        fail_silently=True
+        )
+        
+    context = {
+        "form":form
+    }
+    return render(request,"contact.html",context)

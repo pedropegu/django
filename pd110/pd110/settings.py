@@ -53,6 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'pd110.urls'
 
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='tu_email@gmail.com'
+EMAIL_HOST_PASSWORD='password'
+EMAIL_PORT= 587
+EMAIL_USE_TLS=True
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

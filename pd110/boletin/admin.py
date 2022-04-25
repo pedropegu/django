@@ -1,7 +1,7 @@
 import email
 from django.contrib import admin
 from .models import Registrado
-from .forms import RegModelForm, ReggForm
+from .forms import RegModelForm
 # Register your models here.
 
 class AdminRegistrado(admin.ModelAdmin):
