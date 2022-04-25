@@ -25,7 +25,6 @@ def inicio(request):
         instance = form.save(commit=False)
         nombre = form.cleaned_data.get("nombre")
         email = form.cleaned_data.get("email")
-        print(email)
         if not instance.nombre:
             instance.nombre = "persona"
         instance.save()
@@ -34,14 +33,13 @@ def inicio(request):
         if not nombre:
             nombre = "anonimo"
 
-        context = {
-            "titulo": "Gracias {}".format(nombre)
-        }
+            context = {
+                "titulo": "Gracias {}".format(nombre)
+            }
+    if request.user.is_authenticated and request.user.is_staff:
+        queryset = Registrado.objects.all()
+        context = {"queryset": queryset}
 
-        # form_data = form.cleaned_data
-        # correo = form_data.get("email")
-        # usuario = form_data.get("nombre")
-        # obj = Registrado.objects.create(email=correo, nombre=usuario)
 
     return render(request, "index.html", context)
 
