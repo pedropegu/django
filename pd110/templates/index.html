@@ -1,27 +1,53 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block head_title %}Inicio{% endblock %}
 {% block jumbotron_content %}
-<h1>Inicio</h1>
-<p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">NO ME PULSES &raquo;</a>
-{% endblock %}
+<div class="row">
+    <div class="col-sm-6">
+    <h1>Inicio</h1>
+    <p class="lead">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">NO ME PULSES &raquo;</a>
+    </div>
+<div class="col-sm-6" style="background-color:black;height: 300px;"></div>
+</div>
+    {% endblock %}
 
 
 
 
 
 
-{{ titulo }}
+
+
 <hr />
 <br>
 {% block content %}
-{% if form %}
-<form method="POST" action="">{% csrf_token %}
-{{ form.as_p}}
-<input type="submit" value="Registrame"/>
-</form>
+<div class="row ">
+    <div class="col-sm-6 col-md-4">
+        <p class="lead text-align-center" style="text-align: center;">{{ titulo }}</p>
+        {% if form %}
 
-{% endif %}
+        <form method="POST" action="">{% csrf_token %}
+
+        {{ form|crispy }}
+        <br>
+        <input class="btn btn-primary" type="submit" value="Enviar"/>
+        
+        </form>
+
+        {% endif %}
+
+    </div>
+    <br>
+<div class="col-sm-3 text-align-center" style="text-align: center;">
+    <p>Creador por Pedro Peralta</p>
+</div>
+<div class="col-sm-3 text-align-center" style="text-align: center;">
+    <p>GITHUB</p>
+</div>
+
+
+</div>
+<hr />
 {% endblock %}

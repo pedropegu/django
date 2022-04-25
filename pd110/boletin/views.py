@@ -7,7 +7,7 @@ from .models import Registrado
 # Create your views here.
 def inicio(request):
 
-    titulo = "Hola"
+    titulo = "Bienvenido"
     
 
     if request.user.is_authenticated:
